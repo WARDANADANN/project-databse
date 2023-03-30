@@ -2,7 +2,6 @@ INSERT INTO roles (role_name,role_level) VALUES
 ("SISWA","SD"),
 ("SISWA","SMP"),
 ("SISWA","SMA"),
-("SISWA","SMA"),
 ("SISWA","MAHASISWA"),
 ("ADMIN",null);
 
