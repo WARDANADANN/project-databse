@@ -1,3 +1,23 @@
+<?php
+    include "../controller/controller.php";
+    if(isset($_POST['submit'])){
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+        // VV(cek apakah email ada di database atau tidak)VV
+        if (sql("SELECT * FROM users where user_email='$username' or user_name='$username'")) {
+            // mengambil data dari databse
+            $data=query("SELECT * FROM users where user_email='$username' or user_name='$username'");
+            if($password===$data['user_password']){
+                header("Location: suc.php");
+            }
+
+            
+        }else{
+            echo "<cript> alert('paswsalah')</script>";
+            header("Location: login.php");}
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +34,10 @@
             <input type = "username" name = "username">
         </label>
         <label>
-            Email
-            <input type = "email" name = "email">
+            password
+            <input type = "password" name = "password">
         </label>
-        <button type="submit" name="login">LOGIN</button>
+        <button type="submit" name="submit">LOGIN</button>
     </form>
 </body>
 </html>
