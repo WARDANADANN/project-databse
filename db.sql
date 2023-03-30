@@ -62,10 +62,23 @@ CREATE TABLE questions (
 --     primary key(eventID),
 --     foreign key(roleId) references role(roleId)
 -- )
+-- Create the events table
 CREATE TABLE events (
   event_id INT AUTO_INCREMENT PRIMARY KEY,
   event_name VARCHAR(255),
   role_id VARCHAR(255),
   event_description VARCHAR(9999),
   FOREIGN KEY (role_id) REFERENCES roles (role_id)
+);
+
+-- Add the question_id column with a foreign key constraint
+ALTER TABLE events ADD COLUMN question_id INT;
+ALTER TABLE events ADD FOREIGN KEY (question_id) REFERENCES questions (question_id);
+
+CREATE TABLE invoices (
+  invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+  invoice_detail VARCHAR(255),
+  invoice_amount DECIMAL(10,2),
+  invoice_expired DATE,
+  invoice_status VARCHAR(50)
 );
